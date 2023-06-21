@@ -2,12 +2,14 @@
 
 namespace App\Exceptions;
 
+use App\Traits\ApiResponser;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
 use Throwable;
 
 class Handler extends ExceptionHandler
 {
+    use ApiResponser;
     /**
      * A list of exception types with their corresponding custom log levels.
      *
@@ -59,8 +61,8 @@ class Handler extends ExceptionHandler
             }
         }
 
-        return response()->json([
+        return $this->errorResponse('Validation errors', $exception->status, [
             'errors' => $errors,
-        ], $exception->status);
+        ]);
     }
 }
