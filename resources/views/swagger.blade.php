@@ -8,6 +8,6 @@
 </head>
 <body>
     <div id="swagger-api"></div>
-    @vite('resources/swagger/swagger.js')
+    <script src="{{ mix('js/swagger.js') }}"></script>
 </body>
 </html>
