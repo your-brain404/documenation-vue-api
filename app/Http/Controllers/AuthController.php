@@ -26,7 +26,7 @@ class AuthController extends ApiController
         return $this->successResponse([
             'token' => $token,
             'user' => new UserResource($user)
-        ]);
+        ], 'User registered.');
     }
     public function login(LoginRequest $request)
     {
@@ -47,7 +47,7 @@ class AuthController extends ApiController
             return $this->successResponse([
                 'token' => $user->createToken('auth_token')->plainTextToken,
                 'user' => new UserResource($user)
-            ]);
+            ], "User logged.");
         } else {
             return $this->errorResponse('Email or password does not match!');
         }
