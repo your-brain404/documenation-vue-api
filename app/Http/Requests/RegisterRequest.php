@@ -2,9 +2,8 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterRequest extends FormRequest
+class RegisterRequest extends CustomMessagesRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,5 +26,12 @@ class RegisterRequest extends FormRequest
             'password' => 'required|min:8|same:passwordConfirm',
             'passwordConfirm' => 'required|min:8|same:password'
         ];
+    }
+
+    public function messages()
+    {
+        return array_merge(parent::messages(), [
+            'email.unique' => 'This user already exists!',
+        ]);
     }
 }
