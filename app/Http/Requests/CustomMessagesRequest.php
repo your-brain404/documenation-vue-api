@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MessagesRequest extends FormRequest
+class CustomMessagesRequest extends FormRequest
 {
     public function messages()
     {
